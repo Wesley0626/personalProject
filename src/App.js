@@ -1,15 +1,33 @@
 import React from 'react';
+import './reset.css'
 import './App.css';
 import Header from "./Components/Header"
 import routes from './routes'
+import Footer from './Components/Footer'
+import {connect} from 'react-redux'
 
-function App() {
+function App(props) {
   return (
     <div className="App">
-      <Header />
-      {routes}
+      {props.user.loggedIn ? (
+       <div>
+         <Header />
+         {routes}
+         <Footer />
+       </div>
+      ) : (
+       <div>
+         <Header />
+         {routes}
+       </div> 
+      )
+      }
     </div>
   );
 }
 
-export default App;
+function mapStateToProps(state){
+  return state.user
+}
+
+export default connect(mapStateToProps)(App);

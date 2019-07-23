@@ -1,6 +1,9 @@
 import React, {Component} from 'react'
 import DoerSignup from './DoerSignup'
 import RequesterSignup from './RequesterSignup'
+import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {signup} from '../ducks/userReducer'
 
 class SignUp extends Component{
   constructor(){
@@ -11,7 +14,7 @@ class SignUp extends Component{
       email: '',
       user_name: '',
       password: '',
-      phone: 0,
+      phone: '',
       first_name: '',
       last_name: '',
       skills: [],
@@ -31,6 +34,11 @@ class SignUp extends Component{
   handleChange = e => {
     let {name, value} = e.target
     this.setState({[name]: value})
+  }
+
+  signupUser = () => {
+    this.props.signup(this.state.user_name, this.state.password, this.state.email, this.state.phone, this.state.first_name, this.state.last_name)
+    this.setState({email: '', user_name:'', password:'', phone:'', first_name: '', last_name: ''})
   }
   
   render(){
@@ -60,8 +68,8 @@ class SignUp extends Component{
           )}
         </div>
        <div>
-         <button>Cancel</button>   
-         <button>Submit</button>
+         <button><Link to="/">Cancel</Link></button>   
+         <button onClick={this.signupUser}>Submit</button>
        </div>  
       </div>
     )
@@ -69,4 +77,8 @@ class SignUp extends Component{
   }
 }
 
-export default SignUp
+function mapStateToProps(state){
+  return state.user
+}
+
+export default connect(mapStateToProps, {signup})(SignUp)

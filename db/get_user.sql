@@ -1,2 +1,2 @@
-select * from get_users
+select * from users
 where username = $1;

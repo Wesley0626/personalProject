@@ -1,19 +1,26 @@
-import React, {Component} from 'react'
+import React from 'react'
+import {logout} from '../ducks/userReducer'
+import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 
-class Header extends Component{
-  constructor(){
-    super()
-    this.state = {
-
-    }
-  }
-
-  render(){
+function Header(props) {
     return(
-      <div>Header</div>
+      <div>
+        {props.user.loggedIn ? (
+          <button onClick={props.logout}>Logout</button>
+        ) : (
+          <span>
+            <Link to='/' >Login</Link>
+            <Link to='/signup' >Signup</Link>
+          </span>
+        )}
+      </div>
     )
   }
+
+function mapStateToProps(state){
+  return state.user
 }
 
-export default Header 
+export default connect(mapStateToProps, {logout})(Header) 

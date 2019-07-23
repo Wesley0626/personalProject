@@ -10,7 +10,7 @@ function ForgotPassword(){
       </p>
       <input placeholder="Email" />
       <div>
-        <button><Link to="/login">Cancel</Link></button>
+        <button><Link to="/">Cancel</Link></button>
         <button>Submit</button>
       </div>
     </div>

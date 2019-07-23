@@ -25,7 +25,7 @@ class Login extends Component {
   render(){
     let {username, password} = this.state
     let {user} = this.props
-    if(user.loggedIn) return <Redirect to='/' />
+    if(user.loggedIn) return <Redirect to='/home' />
     return(
       <div>
         <h1>Welcome, log in!</h1>
