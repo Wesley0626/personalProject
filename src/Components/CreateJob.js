@@ -4,7 +4,9 @@ import CalendarDropDown from './CalendarDropDown'
 import CategoryDropDown from './CategoryDropDown'
 import TimeDropDown from './TimeDropDown'
 import Geolocation from './Geolocation'
-
+import { connect } from 'react-redux';
+import {saveJob} from '../ducks/jobReducer'
+import {Link} from 'react-router-dom'
 
 class CreateJob extends Component{
   constructor(){
@@ -25,6 +27,12 @@ class CreateJob extends Component{
     }
   }
 
+  addJob = () => {
+    let {task, category, size, tools, finishHour, finishMinute, amOrPm, finishDay, finishMonth, payout} = this.state
+    this.setState({task: "", payout: ''})
+    saveJob(task, category, size, tools, finishHour, finishMinute, amOrPm, finishDay, finishMonth, payout)
+  }
+
   handleHour = e => {
     this.setState({finishHour: e.target.value})
   }
@@ -41,7 +49,7 @@ class CreateJob extends Component{
   }
 
   handleSize = (e) => {
-    this.setState({size: e.targetvalue})
+    this.setState({size: e.target.value})
   }
 
   handleDay = e => {
@@ -66,7 +74,6 @@ class CreateJob extends Component{
       
       <div>
         <div>
-          <Geolocation />
           Task: {' '}
           <input 
           name='task'
@@ -85,7 +92,8 @@ class CreateJob extends Component{
           Tools on Site: {' '}
           <form action=''>
             <fieldset>
-              <select onClick={this.handleTools}>
+              <select onChange={this.handleTools}>
+                <option>Select</option>
                 <option value='No'>No</option>
                 <option value="Yes">Yes</option>
               </select>
@@ -116,11 +124,17 @@ class CreateJob extends Component{
           onChange={this.handleChange}
           />
         </div>
+        <button onClick={this.addJob}><Link to='/home'>Add Job</Link></button>
       </div>
     )
   }
 }
 
+function mapStateToProps(state){
+  return{
+    userId: state.user.user_id,
+    ...state.jobs
+  }
+}
 
-
-export default CreateJob
+export default connect(mapStateToProps, {saveJob})(CreateJob)

@@ -3,7 +3,6 @@ const saltRounds = 13
 
 module.exports = {
   async login(req, res) {
-    console.log('login')
     let { username, password } = req.body
     const db = req.app.get('db')
     let [existingUser] = await db.get_user(username)
@@ -12,17 +11,16 @@ module.exports = {
     if(result){
       req.session.user = {
         username: existingUser.username,
-        id: existingUser.id,
+        id: existingUser.user_id,
         loggedIn: true
       }
       res.send(req.session.user)
+      console.log('login', req.session.user)
     } else res.status(401).send("Username or Password incorrect")
   },
 
   async signup(req, res) {
-    console.log('hitcontroller')
     let {username, password, email, phone, first_name, last_name} =req.body
-    console.log(req.body)
     const db = req.app.get('db')
     let [existingUser] = await db.get_user(username)
     if(existingUser) return res.status(400).send('Username already exists')

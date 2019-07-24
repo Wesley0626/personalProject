@@ -5,7 +5,8 @@ function SizeBox(props){
     <div>
       <form action='' >
         <fieldset>
-          <select onClick={props.change}>
+          <select onChange={props.change}>
+            <option >Select Size</option>
             <option value="Small">Small</option>
             <option value='Medium'>Medium</option>
             <option value='Large'>Large</option>

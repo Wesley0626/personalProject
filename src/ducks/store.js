@@ -1,10 +1,12 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux'
 import promiseMiddleware from 'redux-promise-middleware'
 import userReducer from './userReducer'
+import jobReducer from './jobReducer'
 
 
 const rootReducer = combineReducers({
-  user: userReducer
+  user: userReducer,
+  jobs: jobReducer
 })
 
 // export default createStore(rootReducer, applyMiddleware(promiseMiddleware))
