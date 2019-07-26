@@ -1,5 +1,5 @@
-delete from get_jobs
-where id = $1;
+delete from jobs
+where job_id = $1;
 
-select * from get_jobs
+select * from jobs
 where user_id=$2

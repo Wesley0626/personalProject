@@ -3,7 +3,6 @@ import SizeBox from './SizeBox'
 import CalendarDropDown from './CalendarDropDown'
 import CategoryDropDown from './CategoryDropDown'
 import TimeDropDown from './TimeDropDown'
-import Geolocation from './Geolocation'
 import { connect } from 'react-redux';
 import {saveJob} from '../ducks/jobReducer'
 import {Link} from 'react-router-dom'
@@ -69,7 +68,7 @@ class CreateJob extends Component{
   }
 
   render(){
-    let {task, size, location, payout} = this.state
+    let {task, location, payout} = this.state
     return(
       
       <div>
@@ -85,9 +84,9 @@ class CreateJob extends Component{
             <CategoryDropDown 
             changeCategory={this.handleCategory}
             />
-          Size: <SizeBox 
+          Size: {' '} 
+          <SizeBox 
           change={this.handleSize}
-          size={size}
           />         
           Tools on Site: {' '}
           <form action=''>

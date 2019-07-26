@@ -1,8 +1,11 @@
 import React from 'react'
+import Job from './Jobs'
 
 function ToBeCompleted(){
   return(
-    <div>To Be Completed</div>
+    <div>
+      <Job />
+    </div>
   )
 }
 

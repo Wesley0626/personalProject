@@ -7,6 +7,7 @@ import Footer from './Components/Footer'
 import {connect} from 'react-redux'
 
 function App(props) {
+  console.log('whynot', props.user)
   return (
     <div className="App">
       {props.user.loggedIn ? (

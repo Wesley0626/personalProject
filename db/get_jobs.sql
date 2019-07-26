@@ -1,1 +1,2 @@
-select * from jobs;
+select * from jobs
+where working_id is null;

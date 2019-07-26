@@ -24,9 +24,9 @@ export const logout = () => {
   }
 }
 
-export const signup = (username, password, email, phone, first_name, last_name) => {
+export const signup = (username, password, email, phone, first_name, last_name, requester, doer) => {
   let data = axios 
-    .post('/api/signup', {username, password, email, phone, first_name, last_name})
+    .post('/api/signup', {username, password, email, phone, first_name, last_name, requester, doer})
     .then(res => res.data)
   return {
     type: SIGNUP,

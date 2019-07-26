@@ -3,16 +3,16 @@ import React from 'react'
 let categories = ["Pick Category", "Yard Work", "House Work", "Errands", "Misc"]
 
 function CategoryDropDown(props){
-  let categorie = categories.map((categorie, i) => {
+  let category = categories.map((categorie, i) => {
     return(
-      <option key={i} value={categorie}>{categorie}</option>
+      <option name="newCategory" key={i} value={categorie}>{categorie}</option>
     )
   })
   return(
     <div>
       <form action=''>
         <select onChange={props.changeCategory}>
-          {categorie}
+          {category}
         </select>
       </form>
     </div>

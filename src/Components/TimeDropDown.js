@@ -6,12 +6,12 @@ let minutes = ["Minute", '00', '15', '30', '45']
 function TimeDropDown(props){
   let hour = hours.map((hour, i) => {
     return(
-      <option key={i} value={hour}>{hour}</option>
+      <option name="newFinishHour" key={i} value={hour}>{hour}</option>
     )
   })
   let minute = minutes.map((minute, i ) => {
     return(
-      <option key={i} value={minute}>{minute}</option>
+      <option name="newFinishMinute" key={i} value={minute}>{minute}</option>
     )
   })
   return(
@@ -26,8 +26,8 @@ function TimeDropDown(props){
           </select>
           <select onChange={props.changeAmPm}>
             <option></option>
-            <option value="AM">AM</option>
-            <option vlaue="PM">PM</option>
+            <option name="newAmOrPm" value="AM">AM</option>
+            <option name="newAmOrPm" vlaue="PM">PM</option>
           </select>
         </fieldset>
       </form>

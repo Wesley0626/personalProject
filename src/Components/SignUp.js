@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import DoerSignup from './DoerSignup'
 import RequesterSignup from './RequesterSignup'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
@@ -9,26 +8,25 @@ class SignUp extends Component{
   constructor(){
     super()
     this.state = {
-      requester: true,
-      doer: false, 
       email: '',
       user_name: '',
       password: '',
       phone: '',
       first_name: '',
       last_name: '',
-      skills: [],
-      certs: [],
-      tools: []
+      requester: true,
+      doer: true
     }
   }
 
   requesterChange = () => {
-    this.setState({requester: true})
+    this.setState({doer: false, requester: true})
+    console.log("request", this.state.requester, this.state.doer)
   }
 
   doerChange = () => {
-    this.setState({requester: false})
+    this.setState({requester: false, doer: true})
+    console.log("request", this.state.requester, this.state.doer)
   }
 
   handleChange = e => {
@@ -37,12 +35,12 @@ class SignUp extends Component{
   }
 
   signupUser = () => {
-    this.props.signup(this.state.user_name, this.state.password, this.state.email, this.state.phone, this.state.first_name, this.state.last_name)
+    this.props.signup(this.state.user_name, this.state.password, this.state.email, this.state.phone, this.state.first_name, this.state.last_name, this.state.requester, this.state.doer)
     this.setState({email: '', user_name:'', password:'', phone:'', first_name: '', last_name: ''})
   }
   
   render(){
-    let {email, user_name, password, phone, first_name, last_name, skills, certs, tools} = this.state
+    let {email, user_name, password, phone, first_name, last_name} = this.state
     return(
       <div>
         <p>Sign Up</p>
@@ -58,14 +56,7 @@ class SignUp extends Component{
           </div>
         </div>
         <div>
-         {this.state.requester ? (
            <RequesterSignup email={email} user_name={user_name} password={password} phone={phone} first_name={first_name} last_name={last_name} handleChange={this.handleChange} />
-           ) : (
-          <div>
-            <RequesterSignup />
-            <DoerSignup skills={skills} certs={certs} tools={tools} handleChange={this.handleChange} />
-          </div>   
-          )}
         </div>
        <div>
          <button><Link to="/">Cancel</Link></button>   
