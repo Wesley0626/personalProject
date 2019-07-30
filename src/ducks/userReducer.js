@@ -1,7 +1,8 @@
 import axios from "axios"
-import {LOGIN, LOGOUT, SIGNUP, GET_USER} from './actionTypes'
+import {LOGIN, LOGOUT, SIGNUP, GET_USER, GET_ALL_USERS} from './actionTypes'
 
 const initialState = {
+  allUsers: [],
   user: {},
   redirect: false,
   error: false
@@ -15,6 +16,13 @@ export const login = (username, password) => {
     type: LOGIN, 
     payload: data
   }
+}
+
+export function getAllUsers() {
+return{
+  type: GET_ALL_USERS, 
+  payload: axios.get('/api/allusers').then(res => res.data)
+}
 }
 
 export const logout = () => {
@@ -76,6 +84,10 @@ export default function(state= initialState, action) {
       return{...state, user: payload, error: false}   
     case GET_USER + '_REJECTED':
       return{...state, redirect: true, error: payload}
+    case GET_ALL_USERS + "_FULFILLED" : 
+      return{...state, allUsers: payload, error: false}
+    case GET_ALL_USERS + '_REJECTED' : 
+      return{...state, error: payload}    
     default: 
       return state    
   }

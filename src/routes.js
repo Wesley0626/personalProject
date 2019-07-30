@@ -9,6 +9,8 @@ import ToBeCompleted from './Components/ToBeCompleted'
 import Working from './Components/Working'
 import DoerCompleted from './Components/DoerCompleted'
 import RequesterCompleted from './Components/RequesterCompleted'
+import Jobs from './Components/Jobs'
+import DoerProfile from './Components/DoerProfile'
 
 export default (
   <Switch>
@@ -17,9 +19,10 @@ export default (
     <Route path='/signup' component={SignUp} />
     <Route path='/home' component={Home} />
     <Route path='/createjob' component={CreateJob} />
-    <Route path='/tobecompleted' component={ToBeCompleted} />
+    <Route path='/tobecompleted' component={Jobs} />
     <Route path='/working' component={Working} />
     <Route path="/requestercompleted" component={RequesterCompleted} />
     <Route path='/doercompleted' component={DoerCompleted} />
+    <Route path='/doerprofile' component={DoerProfile} />
   </Switch>
 )

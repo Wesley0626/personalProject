@@ -11,7 +11,6 @@ class Home extends Component{
   componentDidMount(){
     let{ getJobs } = this.props    
       getJobs()    
-      console.log(this.props.jobs)
   }
 
   // componentDidUpdate(){
@@ -21,10 +20,9 @@ class Home extends Component{
 
   render(){
     let {jobs} = this.props
-    console.log("props", this.props)
     return(
       <div>
-        {jobs.map((job, i) => (
+        {jobs.filter(job => job.working_id === null).map((job, i) => (
           <Display key={job.job_id} {...job}/>
         ))}
         <button><Link to='/createjob'>Post a Job</Link></button>

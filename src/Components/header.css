@@ -1,0 +1,12 @@
+.header-container{
+  height: 10vh;
+  width: 100vw
+}
+#header-links{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.header-link{
+  margin: 0 20px 0 0;
+}

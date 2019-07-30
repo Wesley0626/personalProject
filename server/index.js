@@ -27,6 +27,8 @@ app.post('/api/login', uc.login)
 app.post('/api/signup', uc.signup)
 app.get('/api/user', authCheck, uc.getUser)
 app.delete('/api/logout', uc.logout)
+app.get('/api/allusers', uc.getAllUsers)
+
 app.get('/api/jobs', jc.getJobs)
 app.get('/api/jobsbyuser', jc.getJobsByUser)
 app.get('/api/assignedjobs', jc.getAssignedJobs)
@@ -34,6 +36,7 @@ app.delete('/api/jobs/delete/:jobId', jc.deleteJob)
 app.put('/api/jobs/edit/:jobId', jc.editJob)
 app.post('/api/jobs/save', jc.saveJob)
 app.put('/api/jobs/assignjob/:jobId', jc.assignJob)
+app.put('/api/completejob/:jobId', jc.completeJob)
 
 
 app.listen(SERVER_PORT, () => console.log(`Super Man killing innocents on ${SERVER_PORT}`))

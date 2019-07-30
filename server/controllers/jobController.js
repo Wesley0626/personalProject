@@ -1,6 +1,5 @@
 module.exports = {
   async getJobs(req, res){
-    console.log('get hit')
     let {userId } = req.params
     const db = req.app.get('db')
     let jobs = await db.get_jobs(+userId)
@@ -9,20 +8,25 @@ module.exports = {
   async getJobsByUser(req, res){
     const db = req.app.get('db')
     let jobs = await db.get_jobs_by_user(+req.session.user.id)
+    console.log('res', jobs)
     res.send(jobs)
   },
   async getAssignedJobs(req, res){
-    console.log('assigned', req.session.user.id)
     const db = req.app.get('db')
     let jobs = await db.get_assigned_jobs([req.session.user.id])
     res.send(jobs)
   },
   async deleteJob(req, res){
     let {jobId} = req.params
-    console.log('jobs', jobId)
     const db = req.app.get('db')
     let  jobs = await db.delete_job([+jobId, +req.session.user.id])
     res.send(jobs)
+  },
+  async completeJob(req, res){
+    let {jobId} = req.params
+    const db = req.app.get('db')
+    let complete = await db.complete_job([+jobId, true])
+    res.send(complete)
   },
   async editJob(req, res){
     let {jobId} = req.params

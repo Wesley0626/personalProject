@@ -3,6 +3,8 @@ import {login} from '../ducks/userReducer'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 import {Link} from 'react-router-dom'
+import './login.css'
+
 
 class Login extends Component {
   constructor(){
@@ -27,7 +29,7 @@ class Login extends Component {
     let {user} = this.props
     if(user.loggedIn) return <Redirect to='/home' />
     return(
-      <div>
+      <div className="login">
         <h1>Welcome, log in!</h1>
         <div>
           Username:{' '}
@@ -40,7 +42,6 @@ class Login extends Component {
           />
         </div>
         <div>
-          <div>
             Password:{' '}
             <input 
             placeholder="Password"
@@ -49,9 +50,8 @@ class Login extends Component {
             name="password"
             onChange={this.handleChange}
             />
-          </div>
-          <button onClick={this.loginUser} >Sign In</button>
         </div>
+        <button onClick={this.loginUser} >Sign In</button>
         <div>
           <p>
             Forgot <Link to='/forgotpassword'>Username/Password</Link>?

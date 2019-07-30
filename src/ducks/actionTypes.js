@@ -9,3 +9,6 @@ export const EDIT_JOB = 'EDIT_JOB'
 export const SAVE_JOB = 'SAVE_JOB'
 export const ASSIGN_JOB = "ASSIGN_JOB"
 export const GET_ASSIGNED_JOBS = "GET_ASSIGNED_JOBS"
+export const COMPLETE_JOB = "COMPLETE_JOB"
+export const GET_ALL_USERS = 'GET_ALL_USERS'
+export const SET_DOER_JOB_ID = 'SET_DOER_JOB_ID'

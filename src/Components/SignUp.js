@@ -14,7 +14,7 @@ class SignUp extends Component{
       phone: '',
       first_name: '',
       last_name: '',
-      requester: true,
+      requester: false,
       doer: true
     }
   }

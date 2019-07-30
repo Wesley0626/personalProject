@@ -1,23 +1,27 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {getJobsByUser} from '../ducks/jobReducer'
+import {getJobsByUser, getJobs} from '../ducks/jobReducer'
 import Editing from './Editing';
 
 
 
 class Job extends Component{
 
-  componentDidMount(){
-    let {getJobsByUser, userId} = this.props    
-      getJobsByUser(userId)    
-  }
+componentDidUpdate(){
+let {getJobs} = this.props
+getJobs()
+}
   render(){
     let {jobs} =this.props
+    let job = jobs.filter(job => job.user_id === this.props.user.id && job.completed === null).map(job => (
+      <Editing key={job.job_id} {...job} />  
+      ))
     return(
         <div>
-          {jobs.map(job => (
+          {job}
+          {/* {jobs.filter(job => job.user_id === this.props.user.id && job.completed === null).map(job => (
             <Editing key={job.job_id} {...job} />  
-            ))}
+            ))} */}
         </div>
       )
     }
@@ -26,8 +30,9 @@ class Job extends Component{
 
 function mapStateToProps(state){
   return{
-    ...state.jobs
+    ...state.jobs,
+    ...state.user
   }
 }
 
-export default connect(mapStateToProps, {getJobsByUser})(Job)
+export default connect(mapStateToProps, {getJobsByUser, getJobs})(Job)

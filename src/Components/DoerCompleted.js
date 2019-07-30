@@ -1,10 +1,26 @@
 import React from 'react'
+import Completed from './Completed'
+import {connect} from 'react-redux'
 
 
-function DoerCompleted(){
+function DoerCompleted(props){
+  let {jobs} = props
   return(
-    <div>DoerCompleted</div>
-  )
-}
+    <div>
+      {jobs.filter(job => +job.working_id === +props.user.id && job.completed === "true").map(job => (
+        <Completed key={job.job_id} {...job} />
+      ))}
+    </div>
 
-export default DoerCompleted
+  )
+
+}
+  function mapStateToProps(state){
+    return{
+      ...state.jobs,
+      ...state.user
+    }
+  }
+  
+
+export default connect(mapStateToProps)(DoerCompleted)

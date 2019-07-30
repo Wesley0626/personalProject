@@ -1,23 +1,32 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {getAssignedJobs} from '../ducks/jobReducer'
+import {getJobs} from '../ducks/jobReducer'
 
 
 
 class Working extends Component{
 
   componentDidMount(){
-    let {getAssignedJobs, userId} = this.props
-    getAssignedJobs(userId)
+    let {getJobs} = this.props
+    getJobs()
   }
 
   render(){
     let {jobs} = this.props
-    console.log('jobs', jobs)
     return(
       <div>
-        {jobs.map(job => (
-          <div key={job.job_id} >{job.task}</div>
+        {jobs.filter(filterJob => filterJob.working_id === this.props.user.id && filterJob.completed === null ).map(job => (
+          <div key={job.job_id} >
+            <ul>
+              <li>{job.task}</li>
+              <li>{job.category}</li>
+              <li>{job.size}</li>
+              <li>{job.tools}</li>
+              <li>{job.finish_hour}:{job.finish_minute} {job.am_or_pm}</li>
+              <li>{job.finish_month} {job.finish_day}</li>
+              <li>{job.payout}</li>
+            </ul>
+          </div>
         ))}
       </div>
     )
@@ -27,8 +36,9 @@ class Working extends Component{
 
 function mapStateToProps(state){
   return{
-    ...state.jobs
+    ...state.jobs,
+    ...state.user
   }
 }
 
-export default connect(mapStateToProps, {getAssignedJobs})( Working )
+export default connect(mapStateToProps, {getJobs})( Working )

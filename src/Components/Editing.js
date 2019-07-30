@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {deleteJob, editJob} from '../ducks/jobReducer'
+import {deleteJob, editJob, completeJob, getJobsByUser} from '../ducks/jobReducer'
 import {connect} from 'react-redux'
 import CategoryDropDown from './CategoryDropDown'
 import SizeBox from './SizeBox'
@@ -26,24 +26,29 @@ class Editing extends Component{
     }
   }
 
-  componentDidUpdate(prevProps){
-    let {task, category, size, tools, finishHour, finishMinute, amOrPm, finishDay, finishMonth, payout} = prevProps
-    if(task !== this.props.task || category !== this.props.category || size !==this.props.size || tools !== this.props.tools || finishHour !== this.props.finishHour || finishMinute !== this.props.finishMinute || amOrPm !== this.props.amOrPm || finishDay !== this.props.finishDay || finishMonth !== this.props.finishMonth || payout !== this.props.payout){
-      this.setState({
-        newTask: task,
-        newCategory: category,
-        newSize: size,
-        newTools: tools, 
-        newFinishHour: finishHour,
-        newFinishMinute: finishMinute,
-        newAmOrPm: amOrPm,
-        newFinishDay: finishDay,
-        newFinishMonth: finishMonth,
-        newPayout: payout,      
-        editing: false
-      })
-    }
-  }
+  // componentDidUpdate(prevProps){
+  //   let {task, category, size, tools, finishHour, finishMinute, amOrPm, finishDay, finishMonth, payout} = prevProps
+  //   if(task !== this.props.task || category !== this.props.category || size !==this.props.size || tools !== this.props.tools || finishHour !== this.props.finishHour || finishMinute !== this.props.finishMinute || amOrPm !== this.props.amOrPm || finishDay !== this.props.finishDay || finishMonth !== this.props.finishMonth || payout !== this.props.payout){
+  //     this.setState({
+  //       newTask: task,
+  //       newCategory: category,
+  //       newSize: size,
+  //       newTools: tools, 
+  //       newFinishHour: finishHour,
+  //       newFinishMinute: finishMinute,
+  //       newAmOrPm: amOrPm,
+  //       newFinishDay: finishDay,
+  //       newFinishMonth: finishMonth,
+  //       newPayout: payout,      
+  //       editing: false,
+  //     })
+  //   }
+  // }
+
+  // componentDidUpdate(){
+  //   let {getJobsByUser, userId} = this.props    
+  //     getJobsByUser(userId)    
+  // }
 
   handleHour = e => {
     this.setState({newFinishHour: e.target.value})
@@ -54,27 +59,27 @@ class Editing extends Component{
   handleAmPm = e => {
     this.setState({newAmOrPm: e.target.value})
   }
-
+  
   handleSize = (e) => {
     this.setState({newSize: e.target.value})
   }
-
+  
   handleDay = e => {
     this.setState({newFinishDay: e.target.value})
   }
-
+  
   handleMonth = e => {
     this.setState({newFinishMonth: e.target.value})
   }
-
+  
   handleTools = e => {
     this.setState({newTools: e.target.value})
   }
-
+  
   handleCategory = e => {
     this.setState({newCategory: e.target.value})
   }
-
+  
   handleChange = e => {
     let{name, value} = e.target
     this.setState({[name]: value})
@@ -92,7 +97,11 @@ class Editing extends Component{
     let { job_id, deleteJob} = this.props
     deleteJob(job_id)
   }
-
+  complete = () => {
+    let {completeJob, job_id} = this.props
+    completeJob(job_id)
+  }
+  
 
   render(){
     let {task, category, size, tools, finish_hour, finish_minute, am_or_pm, finish_day, finish_month, payout} = this.props
@@ -160,6 +169,7 @@ class Editing extends Component{
                   Payout: {payout}
                   <button onClick={this.edit}>Edit</button>
                   <button onClick={this.delete}>Delete</button>
+                  <button onClick={this.complete}>Job Completed</button>
                 </div>
               </div>
             )}
@@ -168,4 +178,4 @@ class Editing extends Component{
   }
 }
 
-export default connect(null, {deleteJob, editJob})(Editing)
+export default connect(null, {deleteJob, editJob, completeJob, getJobsByUser})(Editing)
