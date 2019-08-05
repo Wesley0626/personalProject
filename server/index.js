@@ -9,6 +9,7 @@ const ec = require('./controllers/emailController')
 const authCheck = require('./middleware/authCheck')
 const initSession = require('./middleware/initSession')
 const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env
+const path = require('path')
 
 const app = express()
 app.use(express.json())
@@ -48,5 +49,10 @@ app.put('/api/completejob/:jobId', jc.completeJob)
 
 app.post('/api/password/reset', ec.sendEmail)
 
+app.use(express.static(__dirname+'/../build'))
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'))
+})
 
 app.listen(SERVER_PORT, () => console.log(`Super Man killing innocents on ${SERVER_PORT}`))
