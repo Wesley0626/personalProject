@@ -1,9 +1,10 @@
 import React from 'react'
+import './requesterSignup.css'
 
 function RequesterSignup(props){
   let {email, user_name, password, phone, first_name, last_name} = props
   return(
-    <div>
+    <div id='requesterSignUp'>
           Email: {' '}
           <input 
           placeholder='Email'

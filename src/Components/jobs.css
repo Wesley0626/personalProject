@@ -1,0 +1,5 @@
+#in-progress-container{
+  background: #000000;
+  height: 90vh;
+  overflow-y: scroll;
+}

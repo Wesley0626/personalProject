@@ -1,0 +1,19 @@
+#mapped-job{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 2px;
+}
+#display-jobs{
+  display: flex;
+  flex-direction: column;
+  background: #f0f0f0;
+  width: 80vw;
+}
+#job-signup{
+  display: flex;
+  justify-content: flex-end;
+}
+.job-element{
+  font-size: 90%;
+}

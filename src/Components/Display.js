@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {getJobs, assignJob} from '../ducks/jobReducer'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import './display.css'
 
 
 class Display extends Component{
@@ -19,19 +20,19 @@ class Display extends Component{
   render(){
     let {task, category, size, tools, finish_hour, finish_minute, am_or_pm, finish_month, finish_day, payout} = this.props
     return(
-      <div>
-      <ul>
-        <li>{task}</li>
-        <li>{category}</li>
-        <li>{size}</li>
-        <li>{tools}</li>
-        <li>{finish_hour}:{finish_minute}{am_or_pm}</li>
-        <li>{finish_month} {finish_day}</li>
-        <li>{payout}</li>
-      </ul>
-      <div>
+      <div id='mapped-job'>
+      <ul id='display-jobs'>
+        <li className='job-element'>Task: {task}</li>
+        <li className='job-element'>Category: {category}</li>
+        <li className='job-element'>Size: {size}</li>
+        <li className='job-element'>Tools Available: {tools}</li>
+        <li className='job-element'>Completion Time: {finish_hour}:{finish_minute}{am_or_pm}</li>
+        <li className='job-element'>Completion Date: {finish_month} {finish_day}</li>
+        <li className='job-element'>Payout: {payout}</li>
+      <div id='job-signup'>
         <button onClick={this.assign}><Link to='/working'>Sign Up</Link></button>
       </div>
+      </ul>
     </div>
     )
   }

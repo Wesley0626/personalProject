@@ -4,14 +4,16 @@ import React from 'react'
 function Completed(props){
   let {task, category, size, tools, finish_hour, finish_minute, am_or_pm, finish_day, finish_month, payout} = props
  return(
- <div>
-     Task: {task}
-     Category: {category}
-     Size: {size}
-     Tools: {tools}
-     Finish Time: {finish_hour}:{finish_minute} {am_or_pm}
-     Finish Date: {finish_month} {finish_day}     
-     Payot: {payout}
+ <div id='doer-completed-list'>
+   <ul>
+     <li>Task: {task} </li>
+     <li>Category: {category} </li>
+     <li>Size: {size} </li>
+     <li>Tools: {tools} </li>
+     <li>Finish Time: {finish_hour}:{finish_minute} {am_or_pm} </li>
+     <li>Finish Date: {finish_month} {finish_day}  </li>    
+     <li>Payot: {payout} </li>
+   </ul>
  </div>
  )
 }

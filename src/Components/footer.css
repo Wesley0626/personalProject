@@ -1,0 +1,19 @@
+#footer-container{
+  height: 5vh;
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
+  background: #5d737e;
+  display: flex;
+  align-items: center
+}
+.footer-button{
+  width: 33.33vw;
+  height: 4vh;
+  background: none;
+  border: #f0f7ee;
+}
+.footer-link{
+  font-size: 90%;
+  color: #f0f7ee;
+}

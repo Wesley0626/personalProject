@@ -1,12 +1,15 @@
 .header-container{
-  height: 10vh;
-  width: 100vw
-}
-#header-links{
+  height: 5vh;
+  width: 100vw;
+  background: #5d737e;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
+#header-links{
+  margin: 0 20px 0 0;
+}
 .header-link{
   margin: 0 20px 0 0;
+  color: #f0f7ee
 }

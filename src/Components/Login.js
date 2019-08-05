@@ -30,37 +30,39 @@ class Login extends Component {
     if(user.loggedIn) return <Redirect to='/home' />
     return(
       <div className="login">
-        <h1>Welcome, log in!</h1>
-        <div>
-          Username:{' '}
-          <input 
-          placeholder="Username" 
-          type='text'
-          value={username}
-          name="username"
-          onChange={this.handleChange}
-          />
+        <h1 id='welcome-phrase'>Welcome, log in!</h1>
+          <div id='input-container'>
+            <div>
+              Username:{' '}
+              <input 
+              placeholder="Username" 
+              type='text'
+              value={username}
+              name="username"
+              onChange={this.handleChange}
+              />
+            </div>
+            <div>
+                Password:{' '}
+                <input 
+                placeholder="Password"
+                type='text'
+                value={password}
+                name="password"
+                onChange={this.handleChange}
+                />
+            </div>  
+          </div>
+        <div id="login-button-container">
+         <button id='login-button' onClick={this.loginUser} >Sign In</button>
         </div>
-        <div>
-            Password:{' '}
-            <input 
-            placeholder="Password"
-            type='text'
-            value={password}
-            name="password"
-            onChange={this.handleChange}
-            />
-        </div>
-        <button onClick={this.loginUser} >Sign In</button>
-        <div>
-          <p>
-            Forgot <Link to='/forgotpassword'>Username/Password</Link>?
+        <div id='forgot-pw-container'>
+          <p >
+            Forgot <Link id='forgot-pw-link' to='/forgotpassword'>Password</Link>?
           </p>
-        </div>
-        <div>
-          <p>
+          {/* <p>
             Sign up <Link to='/signup'>here!</Link>
-          </p>
+          </p> */}
         </div>
       </div>
     )

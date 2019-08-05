@@ -1,0 +1,9 @@
+#job-container{
+  background: #000000;
+  height: 90vh;
+  width: 100vw;
+  overflow-y: scroll;
+}
+#inner-job{
+  padding: 10px 0px 0 0;
+}

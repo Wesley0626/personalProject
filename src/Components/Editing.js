@@ -5,6 +5,7 @@ import CategoryDropDown from './CategoryDropDown'
 import SizeBox from './SizeBox'
 import TimeDropDown from './TimeDropDown'
 import CalendarDropDown from './CalendarDropDown'
+import './editing.css'
 
 
 class Editing extends Component{
@@ -107,9 +108,9 @@ class Editing extends Component{
     let {task, category, size, tools, finish_hour, finish_minute, am_or_pm, finish_day, finish_month, payout} = this.props
     let {newTask, newPayout, editing} = this.state
     return(
-      <div>
+      <div id='edit-and-display'>
         {editing ? (
-              <div>
+              <div id='editing-inputs'>
                 New Task: {' '}
                 <input
                 name='newTask'
@@ -158,19 +159,21 @@ class Editing extends Component{
                 </div>
               </div>
             ) : (
-              <div>
-                <div>
-                  Task: {task}
-                  Category: {category}
-                  Size: {size}
-                  Tools: {tools}
-                  Finish Time: {finish_hour}:{finish_minute} {am_or_pm}
-                  Finish Date: {finish_month} {finish_day}
-                  Payout: {payout}
-                  <button onClick={this.edit}>Edit</button>
-                  <button onClick={this.delete}>Delete</button>
-                  <button onClick={this.complete}>Job Completed</button>
-                </div>
+              <div id='progress-display-container'>
+                <ul id='progress-display'>
+                  <li>Task: {task}</li>
+                  <li>Category: {category}</li>
+                  <li>Size: {size}</li> 
+                  <li>Tools: {tools}</li>
+                  <li>Finish Time: {finish_hour}:{finish_minute} {am_or_pm}</li>
+                  <li>Finish Date: {finish_month} {finish_day}</li>
+                  <li>Payout: {payout}</li>
+                  <div id='editing-button-container'>
+                   <button id='progress-button' onClick={this.edit}>Edit</button>
+                   <button id='progress-button' onClick={this.delete}>Delete</button>
+                   <button id='progress-button' onClick={this.complete}>Job Completed</button>
+                  </div>
+                </ul>
               </div>
             )}
       </div>

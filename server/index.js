@@ -4,6 +4,8 @@ const massive = require('massive')
 const session = require('express-session')
 const uc = require('./controllers/userControllers')
 const jc = require('./controllers/jobController')
+const mc = require('./controllers/messageController')
+const ec = require('./controllers/emailController')
 const authCheck = require('./middleware/authCheck')
 const initSession = require('./middleware/initSession')
 const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env
@@ -29,6 +31,12 @@ app.get('/api/user', authCheck, uc.getUser)
 app.delete('/api/logout', uc.logout)
 app.get('/api/allusers', uc.getAllUsers)
 
+app.post('/api/createroom', mc.createRoom)
+app.get('/api/messages', mc.getMessages)
+app.get('/api/rooms', mc.getRooms)
+app.post('/api/messages/save', mc.saveMessage)
+app.get('/api/rooms/unique/:user_id', mc.getUniqueRooms)
+
 app.get('/api/jobs', jc.getJobs)
 app.get('/api/jobsbyuser', jc.getJobsByUser)
 app.get('/api/assignedjobs', jc.getAssignedJobs)
@@ -37,6 +45,8 @@ app.put('/api/jobs/edit/:jobId', jc.editJob)
 app.post('/api/jobs/save', jc.saveJob)
 app.put('/api/jobs/assignjob/:jobId', jc.assignJob)
 app.put('/api/completejob/:jobId', jc.completeJob)
+
+app.post('/api/password/reset', ec.sendEmail)
 
 
 app.listen(SERVER_PORT, () => console.log(`Super Man killing innocents on ${SERVER_PORT}`))

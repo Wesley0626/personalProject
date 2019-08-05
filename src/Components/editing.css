@@ -1,0 +1,22 @@
+#editing-inputs{
+  background: #f0f7ee;
+}
+#progress-display-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3px 0 0 0 ;
+}
+#progress-display{
+  background: #f0f0f0;
+  width: 80vw;
+}
+#editing-button-container{
+  display: flex;
+}
+#progress-button{
+  width: 33.33%;
+  height: 3vh;
+  font-size: 70%;
+  font-weight: bolder;
+}

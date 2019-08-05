@@ -6,6 +6,7 @@ import TimeDropDown from './TimeDropDown'
 import { connect } from 'react-redux';
 import {saveJob} from '../ducks/jobReducer'
 import {Link} from 'react-router-dom'
+import './createJob.css'
 
 class CreateJob extends Component{
   constructor(){
@@ -71,8 +72,8 @@ class CreateJob extends Component{
     let {task, location, payout} = this.state
     return(
       
-      <div>
-        <div>
+      <div id='create-container'>
+        <div id='create-inputs'>
           Task: {' '}
           <input 
           name='task'
@@ -98,22 +99,15 @@ class CreateJob extends Component{
               </select>
             </fieldset>
           </form>
-          Location: {' '}
-          <input 
-          name='location'
-          value={location}
-          placeholder="Location"
-          onChange={this.handleChange}
-          />
           Finish by: {' '}
+          <CalendarDropDown 
+          changeDay={this.handleDay}
+          changeMonth={this.handleMonth}
+          /> 
            <TimeDropDown 
            changeHour={this.handleHour}
            changeMinute={this.handleMinute}
            changeAmPm={this.handleAmPm}
-           /> 
-           <CalendarDropDown 
-           changeDay={this.handleDay}
-           changeMonth={this.handleMonth}
            /> 
           Price: {' '}
           <input 
@@ -123,7 +117,9 @@ class CreateJob extends Component{
           onChange={this.handleChange}
           />
         </div>
-        <button onClick={this.addJob}><Link to='/home'>Add Job</Link></button>
+        <div id='create-button-container'>
+          <Link to='/home' onClick={this.addJob} id='create-button'>Add Job</Link>
+        </div>
       </div>
     )
   }

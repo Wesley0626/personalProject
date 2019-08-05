@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getJobs} from '../ducks/jobReducer'
+import './working.css'
 
 
 
@@ -14,10 +15,10 @@ class Working extends Component{
   render(){
     let {jobs} = this.props
     return(
-      <div>
+      <div id='working-container'>
         {jobs.filter(filterJob => filterJob.working_id === this.props.user.id && filterJob.completed === null ).map(job => (
           <div key={job.job_id} >
-            <ul>
+            <ul id='working-list'>
               <li>{job.task}</li>
               <li>{job.category}</li>
               <li>{job.size}</li>

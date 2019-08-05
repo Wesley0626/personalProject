@@ -5,11 +5,26 @@ import {Link} from 'react-router-dom'
 import './header.css'
 
 
-function Header(props) {
+class Header extends React.Component {
+
+  // constructor(props){
+  //   super(props)
+  //   this.goBack = this.goBack.bind(this)
+  // }
+  //  goBack(){
+  //   this.props.history.goBack()
+  // }
+
+  render(){
+    console.log("this.props", this.props)
     return(
       <div className="header-container">
-        {props.user.loggedIn ? (
-          <button onClick={props.logout}>Logout</button>
+        {this.props.user.loggedIn ? (
+          <span id='header-links'>
+            <Link className="header-link" to='/home'>Home</Link>
+            <Link className='header-link' to='/createjob'>Post a Job</Link>
+            <Link className='header-link' onClick={this.props.logout} to='/'>Log Out</Link>
+          </span>
         ) : (
           <span id='header-links'>
             <Link className="header-link" to='/' >Login</Link>
@@ -18,6 +33,7 @@ function Header(props) {
         )}
       </div>
     )
+  }
   }
 
 function mapStateToProps(state){

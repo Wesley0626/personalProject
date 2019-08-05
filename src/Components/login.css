@@ -1,7 +1,48 @@
 .login {
+  height: 95vh;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin: 100px 0 0 0;
+  /* margin: 100px 0 0 0; */
+  background: #000000;
+  color: #f0f7ee;
+}
+#welcome-phrase {
+  height: 10vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+#input-container{
+  height: 5.7vh;
+  width: 67vw;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-direction: column
+}
+#login-button-container{
+  height: 6vh;
+  width: 67vw;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+#login-button{
+  background: none;
+  border: none;
+  color: #f0f7ee
+}
+#forgot-pw-container{
+  height: 20vh;
+  width: 100vw;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center
+}
+#forgot-pw-link {
+  color: #f0f7ee
 }

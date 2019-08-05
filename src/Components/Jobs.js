@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getJobsByUser, getJobs} from '../ducks/jobReducer'
 import Editing from './Editing';
+import './jobs.css'
 
 
 
@@ -17,7 +18,7 @@ getJobs()
       <Editing key={job.job_id} {...job} />  
       ))
     return(
-        <div>
+        <div id='in-progress-container'>
           {job}
           {/* {jobs.filter(job => job.user_id === this.props.user.id && job.completed === null).map(job => (
             <Editing key={job.job_id} {...job} />  

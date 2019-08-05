@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {getAllUsers} from '../ducks/userReducer'
 import {setDoerJobId} from '../ducks/jobReducer'
+import './requesterCompleted.css'
+
 
 class RequesterCompleted extends Component{
 
@@ -21,14 +23,18 @@ class RequesterCompleted extends Component{
     let {jobs} = this.props
     
     return(
-      <div>
+      <div id='requester-completed'>
         {jobs.filter(job => +job.user_id === +this.props.user.id && job.completed === 'true').map(job => (
-          <div key={job.job_id} {...job} >
-            {job.task}
-            {job.category}
+          <div id='requested-completed-container' key={job.job_id} {...job} >
+            <ul>
+             <li>{job.task}</li>
+             <li>{job.category}</li>
+             <li>{job.finish_month} {job.finish_day}</li>
+             <li>${job.payout}</li> 
+            </ul>
             {this.props.allUsers.filter(user => user.user_id === job.working_id).map(user =>(
               <div>
-              Completed By: <Link onClick={this.sendJobId(job.working_id)} to='/doerprofile' >{user.first_name} {user.last_name}</Link>
+              Completed By: <Link id='completed-link' onClick={() =>this.sendJobId(job.working_id)} to='/doerprofile' >{user.first_name} {user.last_name}</Link>
               </div>
             ))}
           </div>

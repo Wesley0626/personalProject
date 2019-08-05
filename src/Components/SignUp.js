@@ -3,6 +3,7 @@ import RequesterSignup from './RequesterSignup'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {signup} from '../ducks/userReducer'
+import './signUp.css'
 
 class SignUp extends Component{
   constructor(){
@@ -42,25 +43,25 @@ class SignUp extends Component{
   render(){
     let {email, user_name, password, phone, first_name, last_name} = this.state
     return(
-      <div>
-        <p>Sign Up</p>
-        <p>Regsiter as:</p>
-        <div>
+      <div id='signup-container'>
+        <p className="paragraphs">Sign Up</p>
+        <p className="paragraphs">Regsiter as:</p>
+        <div id='register-buttons'>
           <div>
             Requester: {' '}
-            <button onClick={this.requesterChange}></button>
+            <button className='signup-buttons' onClick={this.requesterChange}></button>
           </div>
           <div>
             Doer: {' '}
-            <button onClick={this.doerChange}></button>
+            <button className='signup-buttons' onClick={this.doerChange}></button>
           </div>
         </div>
         <div>
            <RequesterSignup email={email} user_name={user_name} password={password} phone={phone} first_name={first_name} last_name={last_name} handleChange={this.handleChange} />
         </div>
-       <div>
-         <button><Link to="/">Cancel</Link></button>   
-         <button onClick={this.signupUser}>Submit</button>
+       <div id='bottom-buttons'>
+         <Link id='signup-link' to="/">Cancel</Link>  
+         <button id="signup-submit-button" onClick={this.signupUser}>Submit</button>
        </div>  
       </div>
     )

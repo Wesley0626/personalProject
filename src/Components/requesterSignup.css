@@ -1,0 +1,8 @@
+#requesterSignUp{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0 0 0;
+  height: 30vh;
+  justify-content: space-evenly
+}

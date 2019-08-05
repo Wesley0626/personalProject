@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {getJobs} from '../ducks/jobReducer'
 import Display from './Display'
-
+import './home.css'
 
 
 class Home extends Component{
@@ -21,11 +21,13 @@ class Home extends Component{
   render(){
     let {jobs} = this.props
     return(
-      <div>
-        {jobs.filter(job => job.working_id === null).map((job, i) => (
-          <Display key={job.job_id} {...job}/>
-        ))}
-        <button><Link to='/createjob'>Post a Job</Link></button>
+      <div id='job-container'>
+        <div id='inner-job'>
+          {jobs.filter(job => job.working_id === null).map((job, i) => (
+            <Display key={job.job_id} {...job}/>
+          ))}
+
+        </div>
       </div>
     )
    }
