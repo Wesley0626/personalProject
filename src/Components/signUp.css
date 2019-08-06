@@ -1,5 +1,5 @@
 #signup-container{
-  background: #000000;
+  background-image:linear-gradient( #000000, grey);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,9 +13,10 @@
 }
 #register-buttons{
   display: flex;
-  justify-content: space-between
+  justify-content: space-between;
 }
 .signup-buttons{
+  margin: 0 5px 0 0;
   height: 1.5vh;
   width: 4vw;
   transition: .1s
@@ -37,4 +38,14 @@
   border: none;
   color: #f0f0f0;
   font-size: 100%
+}
+@media(min-width:450px){
+  .signup-buttons{
+    width: 1em;
+    margin: 0 10px 0 2px;
+  }
+  #bottom-buttons{
+    width: 25vw;
+    margin: 10vh 0 0 0;
+  }
 }

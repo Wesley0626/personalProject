@@ -1,5 +1,5 @@
 #job-container{
-  background: #000000;
+  background-image:linear-gradient( #000000, grey);
   height: 90vh;
   width: 100vw;
   overflow-y: scroll;

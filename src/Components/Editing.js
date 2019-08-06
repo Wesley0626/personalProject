@@ -6,6 +6,7 @@ import SizeBox from './SizeBox'
 import TimeDropDown from './TimeDropDown'
 import CalendarDropDown from './CalendarDropDown'
 import './editing.css'
+import styled from 'styled-components'
 
 
 class Editing extends Component{
@@ -26,30 +27,6 @@ class Editing extends Component{
       newPayout: props.payout       
     }
   }
-
-  // componentDidUpdate(prevProps){
-  //   let {task, category, size, tools, finishHour, finishMinute, amOrPm, finishDay, finishMonth, payout} = prevProps
-  //   if(task !== this.props.task || category !== this.props.category || size !==this.props.size || tools !== this.props.tools || finishHour !== this.props.finishHour || finishMinute !== this.props.finishMinute || amOrPm !== this.props.amOrPm || finishDay !== this.props.finishDay || finishMonth !== this.props.finishMonth || payout !== this.props.payout){
-  //     this.setState({
-  //       newTask: task,
-  //       newCategory: category,
-  //       newSize: size,
-  //       newTools: tools, 
-  //       newFinishHour: finishHour,
-  //       newFinishMinute: finishMinute,
-  //       newAmOrPm: amOrPm,
-  //       newFinishDay: finishDay,
-  //       newFinishMonth: finishMonth,
-  //       newPayout: payout,      
-  //       editing: false,
-  //     })
-  //   }
-  // }
-
-  // componentDidUpdate(){
-  //   let {getJobsByUser, userId} = this.props    
-  //     getJobsByUser(userId)    
-  // }
 
   handleHour = e => {
     this.setState({newFinishHour: e.target.value})
@@ -107,38 +84,60 @@ class Editing extends Component{
   render(){
     let {task, category, size, tools, finish_hour, finish_minute, am_or_pm, finish_day, finish_month, payout} = this.props
     let {newTask, newPayout, editing} = this.state
+    const InputList = styled.ul `
+    display: flex;
+    flex-direction: column;
+    padding: 3px 0 0 0;
+    background: #f0f0f0;
+    width: 80vw;
+    @media(min-width: 450px){
+      display: flex;
+      width: 70vw;
+      justify-content: center;
+      align-items: center;
+      padding: 5px;
+    }
+    `
+    const ShowJob = styled.ul `
+    background: #f0f0f0;
+    width: 80vw;
+    @media(min-width: 450px){
+      width: 70vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    `
     return(
       <div id='edit-and-display'>
         {editing ? (
-              <div id='editing-inputs'>
-                New Task: {' '}
-                <input
+              <InputList>
+          
+                <li className='editing-inputs' > New Task: {' '} <input className='editing-input-fields'
                 name='newTask'
                 value={newTask}
                 placeholder="Change Task"
                 onChange={this.handleChange}
                 />
-                New Category: {' '}
-                <CategoryDropDown 
-                changeCategory={this.handleCategory}
+                </li>
+               <li className='editing-inputs'> New Category: <CategoryDropDown changeCategory={this.handleCategory}
                 />
-                Size: {" "}
-                <SizeBox 
+                </li>
+               <li className='editing-inputs' > Size: {" "} <SizeBox 
                 change={this.handleSize}
                 />
-                Tools on Site: {' '}
-                <form action=''>
-                  <fieldset>
-                    <select onChange={this.handleTools}>
+                </li>
+               <li className='editing-inputs' > Tools on Site: {' '} <form action=''>
+                  <fieldset >
+                    <select id='field-set' onChange={this.handleTools}>
                       <option>Select</option>
                       <option  value='No'>No</option>
                       <option  value="Yes">Yes</option>
                     </select>
                   </fieldset>
-                </form>
-                />   
-                Finish by: {' '}
-                  <TimeDropDown 
+                </form>   
+                </li>
+              <li className='editing-inputs' id="finish-input">  Finish by: {' '}  <TimeDropDown 
                   changeHour={this.handleHour}
                   changeMinute={this.handleMinute}
                   changeAmPm={this.handleAmPm}
@@ -146,34 +145,35 @@ class Editing extends Component{
                 <CalendarDropDown 
                   changeMonth={this.handleMonth}
                   changeDay={this.handleDay}
-                />
-                <input
+                /> </li >
+                <li> Payout: <input className='editing-input-fields'
                 name='newPayout'
                 value={newPayout}
                 placeholder="Price"
                 onChange={this.handleChange}
                 />
-                <div>
                 <button onClick={this.save}>Save</button>
                 <button onClick={this.edit}>Cancel</button>
-                </div>
-              </div>
+                </li>
+              </InputList>
             ) : (
               <div id='progress-display-container'>
-                <ul id='progress-display'>
+                <ShowJob>
                   <li>Task: {task}</li>
                   <li>Category: {category}</li>
                   <li>Size: {size}</li> 
                   <li>Tools: {tools}</li>
                   <li>Finish Time: {finish_hour}:{finish_minute} {am_or_pm}</li>
                   <li>Finish Date: {finish_month} {finish_day}</li>
-                  <li>Payout: {payout}</li>
-                  <div id='editing-button-container'>
-                   <button id='progress-button' onClick={this.edit}>Edit</button>
-                   <button id='progress-button' onClick={this.delete}>Delete</button>
-                   <button id='progress-button' onClick={this.complete}>Job Completed</button>
-                  </div>
-                </ul>
+                  <li>Payout: ${payout}</li>
+                    <div>
+                      <div id='editing-button-container'>
+                       <button id='progress-button' onClick={this.edit}>Edit</button>
+                       <button id='progress-button' onClick={this.delete}>Delete</button>
+                       <button id='progress-button' onClick={this.complete}>Job Completed</button>
+                      </div>
+                    </div>
+                </ShowJob>
               </div>
             )}
       </div>

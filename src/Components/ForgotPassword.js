@@ -19,13 +19,12 @@ class ForgotPassword extends React.Component{
 
   handleSend = () => {
     const {email} = this.state
-    console.log('hello')
     axios.post('/api/password/reset', {email}).then(res => {
-      alert("An email has been sent to the provided address. Please check your inbox")
       this.setState({
         email: ''
       })
-    })
+      alert("An email has been sent to the provided address. Please check your inbox")
+    }).catch(err => console.log('err', err))
   }
 
   render(){
@@ -37,8 +36,8 @@ class ForgotPassword extends React.Component{
         </p>
         <input onChange={this.handleChange} name='email' value={this.state.email} placeholder="Email" />
         <div>
-          <Link className='forgot-password-bandl' to="/">Cancel</Link>
-          <button className='forgot-password-bandl' onClick={this.handleSend}
+          <Link className='forgot-password-bandl' to="/login">Cancel</Link>
+          <button className='forgot-password-bandl' id='fp-button' onClick={this.handleSend}
           >Submit</button>
         </div>
         </div>

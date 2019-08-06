@@ -1,7 +1,7 @@
 #message-container{
   height: 90vh;
   width: 100vw;
-  background: #000000;
+  background-image:linear-gradient( #000000, grey);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -16,6 +16,12 @@
   height: 3vh;
   width: 80vw;
   border: none;
+  background-image: linear-gradient(grey, lightgrey);
+}
+@media(min-width: 450px){
+  #message-input{
+    width: 70vw;
+  }
 }
 #message-button{
   height: 3.2vh;

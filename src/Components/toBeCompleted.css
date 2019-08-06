@@ -1,5 +1,6 @@
 #to-be-completed-container{
   height: 90vh;
   width: 100vw;
-  background: #000000;
+  background-image:linear-gradient( #000000, grey);
+  overflow-y: scroll;
 }

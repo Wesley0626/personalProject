@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom'
 import {getAllUsers} from '../ducks/userReducer'
 import {setDoerJobId} from '../ducks/jobReducer'
 import './requesterCompleted.css'
+import styled from 'styled-components'
 
 
 class RequesterCompleted extends Component{
@@ -21,11 +22,21 @@ class RequesterCompleted extends Component{
 
   render(){
     let {jobs} = this.props
-    
+    const CompletedDisplay = styled.div `
+    background: #f0f0f0;
+    width: 80vw;
+    display: flex;
+    flex-direction: column;  
+    margin: 10px 0 0 0;
+    padding: 2px;
+    @media(min-width: 450px){
+      width: 70vw
+    }
+    `
     return(
       <div id='requester-completed'>
-        {jobs.filter(job => +job.user_id === +this.props.user.id && job.completed === 'true').map(job => (
-          <div id='requested-completed-container' key={job.job_id} {...job} >
+        {jobs.filter(job => +job.user_id === +this.props.user.id && job.completed === 'true').map((job, i) => (
+          <CompletedDisplay key={i} {...job} >
             <ul>
              <li>{job.task}</li>
              <li>{job.category}</li>
@@ -37,7 +48,7 @@ class RequesterCompleted extends Component{
               Completed By: <Link id='completed-link' onClick={() =>this.sendJobId(job.working_id)} to='/doerprofile' >{user.first_name} {user.last_name}</Link>
               </div>
             ))}
-          </div>
+          </CompletedDisplay>
          ))}
       </div>
     )

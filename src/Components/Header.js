@@ -17,17 +17,18 @@ class Header extends React.Component {
 
   render(){
     console.log("this.props", this.props)
+    
     return(
       <div className="header-container">
         {this.props.user.loggedIn ? (
           <span id='header-links'>
             <Link className="header-link" to='/home'>Home</Link>
             <Link className='header-link' to='/createjob'>Post a Job</Link>
-            <Link className='header-link' onClick={this.props.logout} to='/'>Log Out</Link>
+            <Link className='header-link' onClick={() => this.props.logout()} to='/login'>Log Out</Link>
           </span>
         ) : (
           <span id='header-links'>
-            <Link className="header-link" to='/' >Login</Link>
+            <Link className="header-link" to='/login' >Login</Link>
             <Link className="header-link" to='/signup' >Signup</Link>
           </span>
         )}

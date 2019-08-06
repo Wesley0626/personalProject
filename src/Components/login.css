@@ -6,7 +6,7 @@
   justify-content: center;
   flex-direction: column;
   /* margin: 100px 0 0 0; */
-  background: #000000;
+  background-image:linear-gradient( #000000, grey);
   color: #f0f7ee;
 }
 #welcome-phrase {
@@ -18,11 +18,21 @@
 }
 #input-container{
   height: 5.7vh;
-  width: 67vw;
+  width: 69vw;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   flex-direction: column
+}
+@media(min-width: 450px){
+  #input-container{
+    height: 8vh;
+  }
+  #welcome-phrase{
+    height: 20vh;
+    font-size: 150%;
+
+  }
 }
 #login-button-container{
   height: 6vh;
@@ -31,11 +41,7 @@
   align-items: flex-start;
   justify-content: flex-end;
 }
-#login-button{
-  background: none;
-  border: none;
-  color: #f0f7ee
-}
+
 #forgot-pw-container{
   height: 20vh;
   width: 100vw;
@@ -45,4 +51,20 @@
 }
 #forgot-pw-link {
   color: #f0f7ee
+}
+@media(min-width: 450px){
+  .login{
+    font-size: 115%;
+  }
+  #input-container{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #login-button-container{
+    width: 100vw;
+    justify-content: center;
+    margin: 5vh 0 0 0;
+  }
 }

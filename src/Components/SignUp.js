@@ -60,7 +60,7 @@ class SignUp extends Component{
            <RequesterSignup email={email} user_name={user_name} password={password} phone={phone} first_name={first_name} last_name={last_name} handleChange={this.handleChange} />
         </div>
        <div id='bottom-buttons'>
-         <Link id='signup-link' to="/">Cancel</Link>  
+         <Link id='signup-link' to="/login">Cancel</Link>  
          <button id="signup-submit-button" onClick={this.signupUser}>Submit</button>
        </div>  
       </div>

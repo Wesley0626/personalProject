@@ -16,13 +16,11 @@ module.exports = {
         requester: existingUser.requester
       }
       res.send(req.session.user)
-      console.log('login', req.session.user)
     } else res.status(401).send("Username or Password incorrect")
   },
 
   async signup(req, res) {
     let {username, password, email, phone, first_name, last_name, requester, doer} =req.body
-    console.log('request', requester, doer)
     const db = req.app.get('db')
     let [existingUser] = await db.get_user(username)
     if(existingUser) return res.status(400).send('Username already exists')

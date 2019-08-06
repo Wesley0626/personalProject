@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 import './login.css'
+import styled from 'styled-components'
 
 
 class Login extends Component {
@@ -24,10 +25,17 @@ class Login extends Component {
     this.props.login(this.state.username, this.state.password)
   }
 
+
   render(){
     let {username, password} = this.state
     let {user} = this.props
     if(user.loggedIn) return <Redirect to='/home' />
+    const Button = styled.button`
+    background: none;
+    border: none;
+    color: #f0f0f0;
+    }
+    `
     return(
       <div className="login">
         <h1 id='welcome-phrase'>Welcome, log in!</h1>
@@ -46,7 +54,7 @@ class Login extends Component {
                 Password:{' '}
                 <input 
                 placeholder="Password"
-                type='text'
+                type='password'
                 value={password}
                 name="password"
                 onChange={this.handleChange}
@@ -54,7 +62,7 @@ class Login extends Component {
             </div>  
           </div>
         <div id="login-button-container">
-         <button id='login-button' onClick={this.loginUser} >Sign In</button>
+         <Button onClick={this.loginUser} >Sign In</Button>
         </div>
         <div id='forgot-pw-container'>
           <p >

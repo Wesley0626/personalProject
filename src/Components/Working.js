@@ -25,7 +25,7 @@ class Working extends Component{
               <li>{job.tools}</li>
               <li>{job.finish_hour}:{job.finish_minute} {job.am_or_pm}</li>
               <li>{job.finish_month} {job.finish_day}</li>
-              <li>{job.payout}</li>
+              <li>${job.payout}</li>
             </ul>
           </div>
         ))}

@@ -20,9 +20,6 @@ getJobs()
     return(
         <div id='in-progress-container'>
           {job}
-          {/* {jobs.filter(job => job.user_id === this.props.user.id && job.completed === null).map(job => (
-            <Editing key={job.job_id} {...job} />  
-            ))} */}
         </div>
       )
     }

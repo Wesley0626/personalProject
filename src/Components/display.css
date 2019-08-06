@@ -4,16 +4,31 @@
   flex-direction: column;
   padding: 2px;
 }
-#display-jobs{
+/* #display-jobs{
   display: flex;
   flex-direction: column;
   background: #f0f0f0;
   width: 80vw;
-}
+  padding: 2px;
+} */
 #job-signup{
   display: flex;
   justify-content: flex-end;
 }
 .job-element{
   font-size: 90%;
+  font-weight: bolder;
+}
+#sign-up-button{
+  border: none;
+  background: none;
+  text-decoration: none;
+  color: #000000;
+}
+@media(min-width: 450px){
+  #job-signup{
+    width: 100%;
+    display: flex;
+    justify-items: flex-end;
+  }
 }

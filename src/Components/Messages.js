@@ -5,6 +5,7 @@ import{getAllUsers} from '../ducks/userReducer'
 import MessageDisplay from './MessageDisplay'
 import AvailableRooms from './AvailableRooms'
 import './messages.css'
+import styled from 'styled-components'
 
 class Messages extends Component{
   constructor(){
@@ -18,7 +19,6 @@ class Messages extends Component{
     this.props.getMessages()
     this.props.getRooms()
     this.props.getUniqueRooms(this.props.user.id)
-    // this.props.getAllUsers()
   }
 
 
@@ -38,6 +38,18 @@ class Messages extends Component{
 
 
   render(){
+    const MessageButton = styled.button `
+    height: 3.2vh;
+    width: 20vw; 
+    border: none; 
+    padding: none;
+    background-image: linear-gradient(grey, lightgrey);
+    @media(min-width: 450px){
+      width: 10vw;
+      height: 3.2vh;
+      padding: none;
+    }
+    `
     return(
       <div id='message-container'>
         <div id='availableRooms'>
@@ -53,8 +65,9 @@ class Messages extends Component{
           value={this.state.content}
           name='content'
           onChange={this.handleChange}
+          placeholder="Type message here"
           />
-          <button id='message-button' onClick={this.saveMessage}>Send</button>
+          <MessageButton onClick={this.saveMessage}>Send</MessageButton>
         </div>
       </div>
     )

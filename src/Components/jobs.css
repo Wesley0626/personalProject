@@ -1,5 +1,5 @@
 #in-progress-container{
-  background: #000000;
+  background-image:linear-gradient( #000000, grey);
   height: 90vh;
   overflow-y: scroll;
 }

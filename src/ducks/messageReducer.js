@@ -10,7 +10,6 @@ const initialState = {
 }
 
 export const createRoom = (user1, user2) => {
-  console.log('createroom')
   let data = axios.post(`/api/createroom?user1=${user1}&user2=${user2}`).then(res => res.data)
   return {
     type: CREATE_ROOM, 
@@ -19,7 +18,6 @@ export const createRoom = (user1, user2) => {
 }
 
 export const setCurrentRoom = (roomId) => {
-  console.log('setcurrent')
 return{
   type: SET_CURRENT_ROOM, 
   payload: roomId
@@ -52,7 +50,6 @@ export function saveMessages(content, roomId){
 
 export function getUniqueRooms(user_id){
   let data = axios.get(`/api/rooms/unique/${user_id}`).then(res => res.data)
-  console.log('reducerhit', data)
   return{
     type: GET_UNIQUE_ROOMS,
     payload: data

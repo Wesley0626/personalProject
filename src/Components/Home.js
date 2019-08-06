@@ -13,10 +13,6 @@ class Home extends Component{
       getJobs()    
   }
 
-  // componentDidUpdate(){
-  //   let {getJobs} = this.props
-  //   getJobs()
-  // }
 
   render(){
     let {jobs} = this.props

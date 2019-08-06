@@ -8,7 +8,6 @@ module.exports = {
   async getJobsByUser(req, res){
     const db = req.app.get('db')
     let jobs = await db.get_jobs_by_user(+req.session.user.id)
-    console.log('res', jobs)
     res.send(jobs)
   },
   async getAssignedJobs(req, res){
@@ -55,7 +54,6 @@ module.exports = {
     res.send(jobs)
   },
   async assignJob(req, res){
-    console.log("id's", req.params)
     let {jobId} = req.params
     const db = req.app.get('db')
     let signUp = await db.assign_job([+jobId, req.session.user.id])

@@ -17,7 +17,7 @@ import './routes.css'
 export default (
   <Switch className="Routes">
     <Route path='/forgotpassword' component={ForgotPassword} />
-    <Route exact path='/' component={Login} />
+    <Route path='/login' component={Login} />
     <Route path='/signup' component={SignUp} />
     <Route path='/home' component={Home} />
     <Route path='/createjob' component={CreateJob} />

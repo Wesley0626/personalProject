@@ -19,9 +19,7 @@ function AvailableRooms(props){
         <div>
           {props.uniqueRooms.map(room => (
             <button onClick={()=> setRoom(room.room_id)}>Message</button>
-          ))
-  
-          }
+          ))}
         </div>
       )
   }

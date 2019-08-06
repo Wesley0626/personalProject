@@ -24,7 +24,7 @@ app.use(
 
 massive(CONNECTION_STRING).then(db => app.set('db', db))
 
-app.use(initSession)
+app.use(express.json())
 
 app.post('/api/login', uc.login)
 app.post('/api/signup', uc.signup)
